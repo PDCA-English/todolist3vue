@@ -36,14 +36,14 @@ export default {
   },
   methods: {
     async getContact() {
-      const resData = await axios.get("http://127.0.0.1:8000/api/contact");
+      const resData = await axios.get("https://blooming-caverns-24754.herokuapp.com/api/contact");
       this.contactLists = resData.data.data;
     },
     async insertContact() {
       const sendData = {
         name: this.newName,
       };
-      await axios.post("http://127.0.0.1:8000/api/contact", sendData);
+      await axios.post("https://blooming-caverns-24754.herokuapp.com/api/contact", sendData);
       await this.getContact();
       this.newName = "";
       this.newEmail = "";
@@ -52,11 +52,11 @@ export default {
       const sendData = {
         name: name,
       };
-      await axios.put("http://127.0.0.1:8000/api/contact/" + id, sendData);
+      await axios.put("https://blooming-caverns-24754.herokuapp.com/api/contact/" + id, sendData);
       await this.getContact();
     },
     async deleteContact(id) {
-      await axios.delete("http://127.0.0.1:8000/api/contact/" + id);
+      await axios.delete("https://blooming-caverns-24754.herokuapp.com/api/contact/" + id);
       await this.getContact();
     },
   },
