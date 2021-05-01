@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     async getContact() {
-      const resData = await axios.get("https://blooming-caverns-24754.herokuapp.com/api/contact/");
+      const resData = await axios.get("https://blooming-caverns-24754.herokuapp.com/api/contact");
       this.contactLists = resData.data.data;
     },
     async insertContact() {
@@ -49,15 +49,17 @@ export default {
         name: this.newName,
         email: this.newEmail,
       };
-      await axios.post("https://blooming-caverns-24754.herokuapp.com/api/contact/", sendData);
+      await axios.post("https://blooming-caverns-24754.herokuapp.com/api/contact", sendData);
       await this.getContact();
+      this.newName = "";
+      this.newEmail = "";
     },
     async updateContact(id, name, email) {
       const sendData = {
         name: name,
         email: email,
       };
-      await axios.put("https://blooming-caverns-24754.herokuapp.com/contact/" + id, sendData);
+      await axios.put("https://blooming-caverns-24754.herokuapp.com/api/contact/" + id, sendData);
       await this.getContact();
     },
     async deleteContact(id) {
